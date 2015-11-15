@@ -8,6 +8,7 @@ template = """
 <head>
 <title>{{region}}</title>
 <link rel="stylesheet" type="text/css" href="{{style}}">
+
 </head>
 <body>
 <div class="top">
