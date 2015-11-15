@@ -6,10 +6,20 @@ from urllib.request import urlopen
 app = QApplication(sys.argv)
 widg = QWidget()
 
+
+# save the user input
+def set_user_input(inp):
+    global user_input
+    user_input = inp
+def get_user_input():
+    return inp
+
+
 def find(input):
     if is_ip_addr(input):
         #its a ip address
         if is_valid_ip_addr(input):
+            set_user_input(input)
             query_api(input)
         else:
             QMessageBox.about(widg, "Bad Input Message Box", "ip is not public.")
@@ -17,6 +27,7 @@ def find(input):
         # its a hostname
         remove_protocol(input) # removes http:// or https:// from the strin
         if is_valid_host_name(input):
+            set_user_input(input)
             input = convert_to_ip(input)
             query_api(input)
 

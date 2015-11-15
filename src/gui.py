@@ -37,7 +37,7 @@ def on_click():
         QMessageBox.about(widg, "Bad Input Message Box", nothing_prompt)
     else:
         locator.find(input_textbox.text())
-
+        
 
 # form action bindings
 find_button.clicked.connect(on_click)
