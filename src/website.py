@@ -1,7 +1,7 @@
+import locator
 from django.template import Template, Context
 from django.conf import settings
 settings.configure() # required by django
-
 
 template = """
 <html>
@@ -18,7 +18,7 @@ template = """
         <div class="panel panel-default">
 
           <div class="panel panel-heading">
-            <div class="panel-title"><h2>Addressing information for: {{hostname}}</h2></div>
+            <div class="panel-title"><h2>Addressing information for: {{user_input}}</h2></div>
           </div>
 
           <div class="panel-body">
@@ -40,6 +40,7 @@ template = """
 
 def build(input_dict):
 
+    user_request_name = locator.user_input
     region = input_dict['region']
     ip = input_dict['ip']
     hostname = input_dict['hostname']
@@ -50,7 +51,8 @@ def build(input_dict):
 
 
     t = Template(template)
-    c = Context({"region":region,
+    c = Context({"user_input":user_request_name,
+    "region":region,
     "style":"main.css",
     "ip":ip,
     "hostname": hostname,
