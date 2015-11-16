@@ -1,3 +1,4 @@
+import webbrowser
 import locator
 from django.template import Template, Context
 from django.conf import settings
@@ -68,3 +69,9 @@ def build(input_dict):
 
     for i in range(0, len(tags)):
         target.write(tags[i])
+
+    open_url("info.html")
+
+
+def open_url(url):
+    webbrowser.open_new(url)

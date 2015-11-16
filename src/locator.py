@@ -25,7 +25,7 @@ def find(input):
             QMessageBox.about(widg, "Bad Input Message Box", "ip is not public.")
     else:
         # its a hostname
-        remove_protocol(input) # removes http:// or https:// from the strin
+        input = remove_protocol(input) # removes http:// or https:// from the strin
         if is_valid_host_name(input):
             set_user_input(input)
             input = convert_to_ip(input)
@@ -86,6 +86,7 @@ def remove_protocol(hostname):
         hostname  = hostname[7:]
     elif hostname.startswith("https"):
         hostname = hostname[8:]
+    print(hostname)
     return hostname
 
 def convert_to_ip(hostname):
