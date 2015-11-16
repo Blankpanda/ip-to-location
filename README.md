@@ -8,7 +8,8 @@ The following packages are required
 ```
 django
 PyQt4
+BeautifulSoup4
 ```
 
-The output is located in info.html.
+The output is located in info.html but is automatically opened in your default web browser.
 
