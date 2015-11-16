@@ -5,23 +5,36 @@ settings.configure() # required by django
 
 template = """
 <html>
-<head>
-<title>{{region}}</title>
-<link rel="stylesheet" type="text/css" href="{{style}}">
+  <head>
+    <title>Ip Locator</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  </head>
+    <body style="font-family: 'Open Sans', sans-serif;">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4 col-md-12" style="position:absolute;top: 50%;left:50%;transform:translate(-50%, -50%);">
+        <div class="panel panel-default">
 
-</head>
-<body>
-<div class="top">
- IP to location by Caleb Ellis
-<div/>
-<h1>IP address: {{ip}} </h1>
-<p> {{hostname}} </p>
-<p> {{city}} </p>
-<p> {{region}} </p>
-<p> {{country}} </p>
-<p> {{loc}} </p>
-<p> {{org}} </p>
-</body>
+          <div class="panel panel-heading">
+            <div class="panel-title"><h2>Addressing information for: {{hostname}}</h2></div>
+          </div>
+
+          <div class="panel-body">
+            <p class="Lead">IP address: {{ip}}</p>
+            <p>Host name: {{hostname}}</p>
+            <p>City: {{city}}</p>
+            <p>Region: {{region}}</p>
+            <p>Country: {{country}}</p>
+            <p>Coordinates: {{loc}} </p>
+            <p>Organization: {{org}}</p>
+            <hr>
+            <div><small>IP to location by Caleb Ellis and Elijah Ellis</small></div>
+          </div>
+        </div>
+      </div>
+    </body>
 </html>
 """
 
