@@ -32,15 +32,17 @@ input_textbox.resize(280,20)
 # form object actions
 @pyqtSlot()
 def on_click():
-    nothing_prompt = "Please enter in a IP or domain name."
     if input_textbox.text() == "":
-        QMessageBox.about(widg, "Bad Input Message Box", nothing_prompt)
+        QMessageBox.about(widg, "Bad Input Message Box", "Please enter in a IP or domain name.")
     else:
         locator.find(input_textbox.text())
-        
 
 # form action bindings
 find_button.clicked.connect(on_click)
+
+# for use in other modules
+def show_message_box(prompt):
+    QMessageBox.about(widg, "Bad Input Message Box", prompt)
 
 
 widg.show()

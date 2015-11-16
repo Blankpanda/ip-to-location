@@ -1,2 +1,0 @@
-styling of the html output.
-add a flag signifying the country.

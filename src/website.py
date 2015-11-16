@@ -1,5 +1,5 @@
 import webbrowser
-import locator
+import locator, flags
 from django.template import Template, Context
 from django.conf import settings
 settings.configure() # required by django
@@ -16,8 +16,9 @@ template = """
     <body style="font-family: 'Open Sans', sans-serif;">
       <div class="col-lg-4"></div>
       <div class="col-lg-4 col-md-12" style="position:absolute;top: 50%;left:50%;transform:translate(-50%, -50%);">
+      <h1>{{full_name}}</h1>
+      <center><img src= {{flag}} style="padding:20px"></center>
         <div class="panel panel-default">
-
           <div class="panel panel-heading">
             <div class="panel-title"><h2>Addressing information for: {{user_input}}</h2></div>
           </div>
@@ -41,7 +42,7 @@ template = """
 
 def build(input_dict):
 
-    user_request_name = locator.user_input
+
     region = input_dict['region']
     ip = input_dict['ip']
     hostname = input_dict['hostname']
@@ -49,6 +50,11 @@ def build(input_dict):
     country = input_dict['country']
     location = input_dict['loc']
     organization = input_dict['org']
+    user_request_name = locator.user_input
+    flag_file_name = flags.get_flag_image(country)
+    country_full_name = flags.get_country_full_name(country)
+    if country_full_name == None:
+        country_full_name = "Couldn't retrieve Country name."
 
 
     t = Template(template)
@@ -61,10 +67,11 @@ def build(input_dict):
     "country":country,
     "loc":location,
     "org":organization,
+    "flag":flag_file_name,
+    "full_name":country_full_name
     })
 
     tags = str(t.render(c)).splitlines()
-
     target = open("info.html", 'w')
 
     for i in range(0, len(tags)):

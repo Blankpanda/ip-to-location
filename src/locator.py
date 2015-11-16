@@ -11,8 +11,6 @@ widg = QWidget()
 def set_user_input(inp):
     global user_input
     user_input = inp
-def get_user_input():
-    return inp
 
 
 def find(input):
@@ -49,7 +47,6 @@ def is_ip_addr(input):
         return False
 
 def is_valid_host_name(input):
-
     regex_pattern = r"^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$"
     if len(input) > 255: # maximum characters for a hostname
         return False
@@ -62,16 +59,11 @@ def is_valid_host_name(input):
 
 
 def is_valid_ip_addr(ip): # lmao should of used a regex
-
     octets = ip.split(".")
-
     b_second_octets = list(range(16,32))
-
 
     # the elements of the list need to be a string
     for i in range(0,len(b_second_octets)): b_second_octets[i] = str(b_second_octets[i])
-
-
     # class A,B,C, localhost, APIPA
     if octets[0] == "127":  return False
     if octets[0] == "10":  return False
@@ -86,7 +78,6 @@ def remove_protocol(hostname):
         hostname  = hostname[7:]
     elif hostname.startswith("https"):
         hostname = hostname[8:]
-    print(hostname)
     return hostname
 
 def convert_to_ip(hostname):
