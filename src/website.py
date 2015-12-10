@@ -1,8 +1,11 @@
-import webbrowser
+import webbrowser, django , os
 import locator, flags
 from django.template import Template, Context
 from django.conf import settings
+
+
 settings.configure() # required by django
+django.setup()
 
 template = """
 <html>
@@ -78,7 +81,6 @@ def build(input_dict):
         target.write(tags[i])
 
     open_url("info.html")
-
 
 def open_url(url):
     webbrowser.open_new(url)

@@ -1,11 +1,7 @@
 import sys, re, socket, json, codecs
 import website
-from PyQt4.QtGui import QMessageBox, QApplication, QWidget
+
 from urllib.request import urlopen
-
-app = QApplication(sys.argv)
-widg = QWidget()
-
 
 # save the user input
 def set_user_input(inp):
@@ -20,7 +16,7 @@ def find(input):
             set_user_input(input)
             query_api(input)
         else:
-            QMessageBox.about(widg, "Bad Input Message Box", "ip is not public.")
+            print("IP is not public.")
     else:
         # its a hostname
         input = remove_protocol(input) # removes http:// or https:// from the strin
@@ -30,7 +26,7 @@ def find(input):
             query_api(input)
 
         else:
-            QMessageBox.about(widg, "Bad Input Message Box", "hostname is invalid.")
+            print("Hostname is invalid.")
 
 
 
@@ -90,4 +86,5 @@ def query_api(ip):
     reader = codecs.getreader("utf-8")
     response = urlopen(url)
     json_data = json.load(reader(response))
+    print("Done.  Building website.")
     website.build(json_data)
