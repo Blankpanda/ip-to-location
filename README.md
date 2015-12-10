@@ -7,9 +7,13 @@ The output is built as a local html file.
 The following packages are required
 ```
 django
-PyQt4
 BeautifulSoup4
 ```
+
+```
+PyQt4
+```
+is optional for the GUI version which isn't working.
 
 The output is located in info.html but is automatically opened in your default web browser.
 
